@@ -11,7 +11,7 @@
   <hr>
 
   <div plangular="https://soundcloud.com/nydrewreynolds/ed-sheeran-dont-lucas-luck-remix">
-    <h3>{{track.user.username}} - {{track.title}}</h3>
+    <h3 ng-bind="Loading Track">{{track.user.username}} - {{track.title}}</h3>
     <button ng-click="play()">Play</button>
     <button ng-click="pause()">Pause</button>
     <progress
