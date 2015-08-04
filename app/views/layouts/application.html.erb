@@ -9,7 +9,7 @@
   <script src="assets/plangular.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
-<body id="background" ng-app="app">
+<body id="background">
 <%= render partial: 'layouts/nav' unless current_page?(root_url) %>
 
 <%= yield %>
