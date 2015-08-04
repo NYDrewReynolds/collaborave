@@ -16,8 +16,8 @@
 
 body#background {
     background: linear-gradient(
-            rgba(135, 206, 250, 0.75),
-            rgba(135, 206, 250, 0.75)
+            rgba(220, 20, 60, 0.75),
+            rgba(220, 20, 60, 0.75)
     ),
     url('http://guestofaguest.com/wp-content/uploads/2009/05/img_1461.jpg') no-repeat 50% 50% fixed;
     /*background: url('http://www.juiced.today/wp-content/uploads/2015/03/house-party-4.jpg') no-repeat 50% 50% fixed;*/
@@ -53,4 +53,20 @@ body {
 #home-banner hr {
     border: 1px solid white;
     width: 150px;
+}
+
+.btn-ghost {
+    font-size: 2em;
+    background: transparent;
+    color: #F2F2F2;
+    border-style: 20px solid;
+    border-color: #FFF;
+
+    /* CSS Transition */
+    -webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
+    -moz-transition: background .2s ease-in-out, border .2s ease-in-out;
+    -ms-transition: background .2s ease-in-out, border .2s ease-in-out;
+    -o-transition: background .2s ease-in-out, border .2s ease-in-out;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+
 }

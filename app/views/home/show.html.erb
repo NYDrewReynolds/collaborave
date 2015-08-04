@@ -1,6 +1,21 @@
+<script>
+    $(function () {
+        $(".element").typed({
+            strings: ["Parties.", "Barbecues.", "Friends."],
+            typeSpeed: 200,
+            // time before typing starts
+            startDelay: 0,
+            // backspacing speed
+            backSpeed: 0,
+            // time before backspacing
+            backDelay: 700,
+        });
+    });
+</script>
 <div id="home-container">
-    <div id="home-banner">
-     <h1>A Social Playlist For Parties</h1>
-      <hr>
-    </div>
+  <div id="home-banner">
+    <h1>A Social Playlist For <span class="element"></span></h1>
+    <hr>
+    <a type="button" class="btn btn-lg btn-info btn-ghost">Login With Twitter</a>
+  </div>
 </div>
