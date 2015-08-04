@@ -13,3 +13,44 @@
  *= require_tree .
  *= require_self
  */
+
+body#background {
+    background: linear-gradient(
+            rgba(135, 206, 250, 0.75),
+            rgba(135, 206, 250, 0.75)
+    ),
+    url('http://guestofaguest.com/wp-content/uploads/2009/05/img_1461.jpg') no-repeat 50% 50% fixed;
+    /*background: url('http://www.juiced.today/wp-content/uploads/2015/03/house-party-4.jpg') no-repeat 50% 50% fixed;*/
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+}
+
+body {
+    font-family: Lato, sans-serif;
+}
+
+#home-banner {
+    position: fixed;
+    top: 15%;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    margin: auto;
+    max-width: 700px;
+    color: #fff;
+    text-align: center;
+}
+
+#home-banner h1 {
+    font-size: 5.5em;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 0;
+}
+
+#home-banner hr {
+    border: 1px solid white;
+    width: 150px;
+}
