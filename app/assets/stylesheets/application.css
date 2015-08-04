@@ -47,8 +47,7 @@ body {
     font-size: 2em;
     background: transparent;
     color: #F2F2F2;
-    border-style: 20px solid;
-    border-color: #FFF;
+    border: 3px solid white;
 
     /* CSS Transition */
     -webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
