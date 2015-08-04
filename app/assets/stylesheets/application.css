@@ -14,26 +14,14 @@
  *= require_self
  */
 
-body#background {
-    background: linear-gradient(
-            rgba(220, 20, 60, 0.75),
-            rgba(220, 20, 60, 0.75)
-    ),
-    url('http://guestofaguest.com/wp-content/uploads/2009/05/img_1461.jpg') no-repeat 50% 50% fixed;
-    /*background: url('http://www.juiced.today/wp-content/uploads/2015/03/house-party-4.jpg') no-repeat 50% 50% fixed;*/
-    background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -webkit-background-size: cover;
-}
-
 body {
     font-family: Lato, sans-serif;
+    /*background-color: #DC143C;*/
 }
 
 #home-banner {
     position: fixed;
-    top: 15%;
+    top: 25%;
     right: 0;
     left: 0;
     z-index: 2;
@@ -69,4 +57,48 @@ body {
     -o-transition: background .2s ease-in-out, border .2s ease-in-out;
     transition: background .2s ease-in-out, border .2s ease-in-out;
 
+}
+
+.navbar-default {
+    background-color: #DC143C;
+    border-color: #ad102f;
+}
+
+.navbar-default .navbar-brand {
+    color: #FFF;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #FFF;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #FFF;
+}
+
+.navbar-default .navbar-toggle {
+    background-color: #FFF;
+}
+#welcome-banner {
+    position: fixed;
+    top: 10%;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    margin: auto;
+    max-width: 700px;
+    color: #000;
+    text-align: center;
+}
+
+#welcome-banner h1 {
+    font-size: 5.5em;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 0;
+}
+
+#welcome-banner hr {
+    border: 1px solid black;
+    width: 150px;
 }
