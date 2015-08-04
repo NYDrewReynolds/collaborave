@@ -101,3 +101,8 @@ body {
     border: 1px solid black;
     width: 150px;
 }
+
+.btn-search {
+    background-color: #DC143C;
+    color: white;
+}

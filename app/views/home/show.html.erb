@@ -1,4 +1,3 @@
-
 <script>
     var app = angular.module('app', ['plangular'])
             .config(function (plangularConfigProvider) {
@@ -9,16 +8,26 @@
 <div id="welcome-banner" ng-app="app">
   <h1>Start a Party</h1>
   <hr>
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+      <div class="input-group">
+        <input id="search" type="search" name="search" type="text" class="form-control" placeholder="Search SoundCloud">
+      <span class="input-group-btn">
+        <button class="btn btn-default btn-search" type="button">Go!</button>
+      </span>
+      </div>
+    </div>
+  </div>
 
   <div plangular="https://soundcloud.com/ffrr-records/oliver-heldens-x-becky-hill-gecko-overdrive-radio">
     <h3>{{track.user.username}} - {{track.title}}</h3>
-    <button ng-click="play()">Play</button>
-    <button ng-click="pause()">Pause</button>
-    <progress
-    ng-click="seek($event)"
-    ng-value="currentTime / duration">
+
+    <button ng-click="playPause()">Play/Pause</button>
+    <progress ng-click="seek($event)" ng-value="currentTime / duration">
       {{ currentTime / duration }}
-    </progress>
+    </progress><br>
     <a ng-href="{{track.permalink_url}}">View on SoundCloud</a>
   </div>
+
+
 </div>
