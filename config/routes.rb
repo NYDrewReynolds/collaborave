@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
 
-  root 'home#show'
+  root 'landing#show'
 end
