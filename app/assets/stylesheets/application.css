@@ -17,6 +17,7 @@
 body {
     font-family: Lato, sans-serif;
     /*background-color: #DC143C;*/
+    overflow: scroll;
 }
 
 #home-banner {
@@ -79,7 +80,6 @@ body {
     background-color: #FFF;
 }
 #welcome-banner {
-    position: fixed;
     top: 10%;
     right: 0;
     left: 0;
@@ -106,3 +106,16 @@ body {
     background-color: #DC143C;
     color: white;
 }
+
+.sc-track {
+    border: 2px solid #DC143C;
+    margin: 10px;
+}
+
+.tracklist li {
+    list-style-type: none;
+}
+
+/*.tracklist {*/
+    /*overflow: scroll;*/
+/*}*/
