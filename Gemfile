@@ -12,6 +12,7 @@ gem 'twitter-bootstrap-rails'
 gem 'rails_12factor', group: :production
 gem 'figaro'
 gem 'angularjs-rails'
+gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'byebug'
