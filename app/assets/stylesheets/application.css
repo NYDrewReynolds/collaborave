@@ -72,6 +72,12 @@ body {
     color: #FFF;
 }
 
+.navbar-default .navbar-nav > li:first-child {
+    color: #FFF;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
 .navbar-default .navbar-toggle {
     border-color: #FFF;
 }

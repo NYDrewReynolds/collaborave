@@ -49,9 +49,7 @@
             <h3>{{track.user.username}} - {{track.title}}</h3>
 
             <button ng-click="playPause($index)" ng-class="{'active': player.playing === track.src}">Play/Pause</button>
-            <progress
-            ng-click="seek($event)"
-            ng-value="currentTime / duration">
+            <progress ng-click="seek($event)" ng-value="currentTime / duration">
               {{ currentTime / duration }}
             </progress>
             <br>
