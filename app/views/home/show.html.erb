@@ -1,62 +1,52 @@
 <div class="container">
 
-  <script>
-      var app = angular.module('app', ['plangular'])
-              .config(function (plangularConfigProvider) {
-                  plangularConfigProvider.clientId = '9f4653e84b164bb44aadc5d79ff55863';
-              });
-  </script>
+  <div class="row">
+    <% if current_user.parties.empty? %>
+        <div class="col-lg-6 col-lg-offset-3">
+          <div id="welcome-banner">
+            <h1>Start a Party!</h1>
 
-  <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
-  <script>
-      SC.initialize({
-          client_id: '9f4653e84b164bb44aadc5d79ff55863'
-      });
-  </script>
+            <%= form_for(@party, url: {action: "create"}, html: {multipart: true}) do |f| %>
+                <!--<ul class="errors">-->
+                <!--<#% f.object.errors.full_messages.each do |msg| %>-->
+                <!--<li><%#= msg %></li>-->
+                <!--<#% end %>-->
+                <!--</ul>-->
 
-  <div id="welcome-banner">
-    <h1>Start a Party</h1>
-    <hr>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
-        <div class="input-group">
-          <input id="search" type="search" name="search" type="text" class="form-control" placeholder="Search SoundCloud">
-      <span class="input-group-btn">
-        <button class="btn btn-default btn-search" type="button">Go!</button>
-      </span>
-        </div>
-      </div>
-    </div>
+                <%= f.label :name %>
+                <%= f.text_field :name %><br>
 
-    <!--<div class="sc-track" plangular="https://soundcloud.com/ffrr-records/oliver-heldens-x-becky-hill-gecko-overdrive-radio">-->
-    <!--<div class="pull-left"><img ng-src="{{ track.artwork_url  }}"></div>-->
-    <!--<h3>{{track.user.username}} - {{track.title}}</h3>-->
-
-    <!--<button ng-click="playPause()">Play/Pause</button>-->
-    <!--<progress ng-click="seek($event)" ng-value="currentTime / duration">-->
-    <!--{{ currentTime / duration }}-->
-    <!--</progress>-->
-    <!--<br>-->
-    <!--<a ng-href="{{track.permalink_url}}">View on SoundCloud</a>-->
-    <!--</div>-->
-
-    <div class="row tracklist" ng-app="app" plangular="http://soundcloud.com/oliverheldens/tracks">
-      <ul>
-        <li ng-repeat="track in tracks">
-
-          <div class="sc-track">
-            <div class="pull-left"><img ng-src="{{ track.artwork_url  }}"></div>
-            <h3>{{track.user.username}} - {{track.title}}</h3>
-
-            <button ng-click="playPause($index)" ng-class="{'active': player.playing === track.src}">Play/Pause</button>
-            <progress ng-click="seek($event)" ng-value="currentTime / duration">
-              {{ currentTime / duration }}
-            </progress>
-            <br>
-            <a ng-href="{{track.permalink_url}}">View on SoundCloud</a>
+                <%= f.submit "Get the Party Started!" %>
+            <% end %>
           </div>
-        </li>
-      </ul>
+        </div>
+    <% else %>
+        <div class="col-lg-4 col-lg-offset-2">
+          <h1>Start a Party!</h1>
+          <%= form_for(@party, url: {:action => "create", :controller => "parties"}, html: {multipart: true}) do |f| %>
+              <!--<ul class="errors">-->
+              <!--<#% f.object.errors.full_messages.each do |msg| %>-->
+              <!--<li><%#= msg %></li>-->
+              <!--<#% end %>-->
+              <!--</ul>-->
+
+              <%= f.label :name %>
+              <%= f.text_field :name %><br>
+
+              <%= f.submit "Get the Party Started!", class:"btn btn-search" %>
+          <% end %>
+        </div>
+
+        <div class="col-lg-4 col-lg-offset-1">
+          <h1>Your Past Parties</h1>
+          <ul>
+            <% current_user.parties.each do |party| %>
+                <li>
+                  <%= link_to party.name, party_path(party) %>
+                </li>
+            <% end %>
+          </ul>
+    <% end %>
     </div>
   </div>
 </div>

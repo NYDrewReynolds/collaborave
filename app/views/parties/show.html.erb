@@ -1,0 +1,64 @@
+<div class="container">
+
+  <script>
+      var app = angular.module('app', ['plangular'])
+              .config(function (plangularConfigProvider) {
+                  plangularConfigProvider.clientId = '9f4653e84b164bb44aadc5d79ff55863';
+              });
+  </script>
+
+  <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
+  <script>
+      SC.initialize({
+          client_id: '9f4653e84b164bb44aadc5d79ff55863'
+      });
+  </script>
+
+  <div id="welcome-banner">
+    <h1><%= @party.name %></h1>
+    <hr>
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="input-group">
+          <input id="search" type="search" name="search" type="text" class="form-control" placeholder="Search SoundCloud">
+      <span class="input-group-btn">
+        <button class="btn btn-default btn-search" type="button">Go!</button>
+      </span>
+        </div>
+      </div>
+    </div>
+
+    <div id="sc-results"></div>
+
+    <!--<div class="sc-track" plangular="https://soundcloud.com/ffrr-records/oliver-heldens-x-becky-hill-gecko-overdrive-radio">-->
+    <!--<div class="pull-left"><img ng-src="{{ track.artwork_url  }}"></div>-->
+    <!--<h3>{{track.user.username}} - {{track.title}}</h3>-->
+
+    <!--<button ng-click="playPause()">Play/Pause</button>-->
+    <!--<progress ng-click="seek($event)" ng-value="currentTime / duration">-->
+    <!--{{ currentTime / duration }}-->
+    <!--</progress>-->
+    <!--<br>-->
+    <!--<a ng-href="{{track.permalink_url}}">View on SoundCloud</a>-->
+    <!--</div>-->
+
+    <!--<div class="tracklist" ng-app="app" plangular="http://soundcloud.com/oliverheldens/tracks">-->
+    <!--<ul>-->
+    <!--<li ng-repeat="track in tracks">-->
+
+    <!--<div class="sc-track">-->
+    <!--<div class="pull-left"><img ng-src="{{ track.artwork_url  }}"></div>-->
+    <!--<h3>{{track.user.username}} - {{track.title}}</h3>-->
+
+    <!--<button ng-click="playPause($index)" ng-class="{'active': player.playing === track.src}">Play/Pause</button>-->
+    <!--<progress ng-click="seek($event)" ng-value="currentTime / duration">-->
+    <!--{{ currentTime / duration }}-->
+    <!--</progress>-->
+    <!--<br>-->
+    <!--<a ng-href="{{track.permalink_url}}">View on SoundCloud</a>-->
+    <!--</div>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
+  </div>
+</div>

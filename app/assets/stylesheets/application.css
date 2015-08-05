@@ -68,6 +68,10 @@ body {
     color: #FFF;
 }
 
+.navbar-default .navbar-brand:hover {
+    color: #333;
+}
+
 .navbar-default .navbar-nav > li > a {
     color: #FFF;
 }

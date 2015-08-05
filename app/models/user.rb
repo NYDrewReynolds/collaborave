@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :parties
+
   def self.from_omniauth(auth_info)
     if user = find_by(uid: auth_info.uid)
       user
