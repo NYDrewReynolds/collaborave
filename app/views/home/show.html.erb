@@ -6,7 +6,7 @@
           <div id="welcome-banner">
             <h1>Start a Party!</h1>
 
-            <%= form_for(@party, url: {action: "create"}, html: {multipart: true}) do |f| %>
+            <%= form_for(@party, url: {:action => "create", :controller => "parties"}, html: {multipart: true}) do |f| %>
                 <!--<ul class="errors">-->
                 <!--<#% f.object.errors.full_messages.each do |msg| %>-->
                 <!--<li><%#= msg %></li>-->
