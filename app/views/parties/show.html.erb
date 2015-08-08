@@ -38,41 +38,41 @@
 
     <div class="col-lg-6">
       <div id="welcome-banner">
-      <h2>Tracklist</h2>
+        <h2>Tracklist</h2>
       </div>
-      <!--<div class="sc-track" plangular="https://soundcloud.com/ffrr-records/oliver-heldens-x-becky-hill-gecko-overdrive-radio">-->
+      <% @party.songs.each do |song| %>
+          <div class="sc-track" ng-app="app" plangular="<%= song.url %>">
+            <div class="pull-left"><img ng-src="{{ track.artwork_url  }}"></div>
+            <h3>{{track.user.username}} - {{track.title}}</h3>
+
+            <button ng-click="playPause()">Play/Pause</button>
+            <progress ng-click="seek($event)" ng-value="currentTime / duration">
+              {{ currentTime / duration }}
+            </progress>
+            <br>
+            <a ng-href="<%= song.url %>">View on SoundCloud</a>
+          </div>
+      <% end %>
+      <!--<div class="tracklist" ng-app="app" plangular="http://soundcloud.com/oliverheldens/tracks">-->
+      <!--<ul>-->
+      <!--<li ng-repeat="track in tracks">-->
+
+      <!--<div class="sc-track">-->
       <!--<div class="pull-left"><img ng-src="{{ track.artwork_url  }}"></div>-->
       <!--<h3>{{track.user.username}} - {{track.title}}</h3>-->
 
-      <!--<button ng-click="playPause()">Play/Pause</button>-->
+      <!--<button ng-click="playPause($index)" ng-class="{'active': player.playing === track.src}">Play/Pause</button>-->
       <!--<progress ng-click="seek($event)" ng-value="currentTime / duration">-->
       <!--{{ currentTime / duration }}-->
       <!--</progress>-->
-      <!--<br>-->
-      <!--<a ng-href="{{track.permalink_url}}">View on SoundCloud</a>-->
+      <!--<a class="pull-right" ng-href="{{track.permalink_url}}">View on SoundCloud</a>-->
       <!--</div>-->
-
-      <div class="tracklist" ng-app="app" plangular="http://soundcloud.com/oliverheldens/tracks">
-        <ul>
-          <li ng-repeat="track in tracks">
-
-            <div class="sc-track">
-              <div class="pull-left"><img ng-src="{{ track.artwork_url  }}"></div>
-              <h3>{{track.user.username}} - {{track.title}}</h3>
-
-              <button ng-click="playPause($index)" ng-class="{'active': player.playing === track.src}">Play/Pause</button>
-              <progress ng-click="seek($event)" ng-value="currentTime / duration">
-                {{ currentTime / duration }}
-              </progress>
-              <a class="pull-right" ng-href="{{track.permalink_url}}">View on SoundCloud</a>
-            </div>
-          </li>
-        </ul>
-      </div>
+      <!--</li>-->
+      <!--</ul>-->
+      <!--</div>-->
 
     </div>
   </div>
-
 
 
 </div>
