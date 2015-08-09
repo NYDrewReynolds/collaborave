@@ -8,4 +8,10 @@ Rails.application.routes.draw do
   resources :parties
   resources :songs
   resources :party_songs
+
+  namespace :api do
+    namespace :v1 do
+      post 'add_song', to: 'search#add_song'
+    end
+  end
 end

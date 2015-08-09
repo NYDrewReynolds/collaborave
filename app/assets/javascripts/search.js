@@ -22,7 +22,8 @@ jQuery(document).ready(function ($) {
 
             $('a.search-result').on('click', function () {
                 var songParams = {
-                    post: {permalink_url: this.getAttribute("data-url")}
+                    post: {permalink_url: this.getAttribute("data-url"),
+                           party_id: this.pathname[this.pathname.length - 1]}
                 };
 
                 $.ajax({
