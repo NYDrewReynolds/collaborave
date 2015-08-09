@@ -18,39 +18,32 @@ jQuery(document).ready(function ($) {
                     + "</a>"
                     + "</div>"
                 );
-                //
-                //var track_url = tracks[i].permalink_url;
-                //var player = SC.oEmbed(track_url, {auto_play: true});
-                //
-                //$('#sc-results').html(player);
             }
 
             $('a.search-result').on('click', function () {
-                console.log("WOOOWWOWOWOW!!!");
                 var songParams = {
-                    post: {permalink_url: $('permalink_url')}
-            };
+                    post: {permalink_url: this.getAttribute("data-url")}
+                };
 
-            $.ajax({
-                type: 'POST',
-                url: '/api/v1/add_song',
-                data: songParams,
-                success: function (newSong) {
-                    $('#latest-posts').append(
-                        "<div class='sc-track' plangular='"
-                        + newSong.url
-                        + "'><div class='pull-left'<img ng-src='{{track.artwork_url}}'></div> <h3>{{track.user.username}} - {{track.title}}</h3> <button ng-click='playPause()'>Play/Pause</button><progress ng-click='seek($event)' ng-value='currentTime / duration' > {{ currentTime / duration }} </progress> <br> <a ng-href='"
-                        + newSong.url
-                        + "'> View on SoundCloud </a>"
-                        + "</div>"
-                    )
-                }
-            })
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/v1/add_song',
+                    data: songParams,
+                    success: function (newSong) {
+                        $('#latest-posts').append(
+                            "<div class='sc-track' plangular='"
+                            + newSong.url
+                            + "'><div class='pull-left'<img ng-src='{{track.artwork_url}}'></div> <h3>{{track.user.username}} - {{track.title}}</h3> <button ng-click='playPause()'>Play/Pause</button><progress ng-click='seek($event)' ng-value='currentTime / duration' > {{ currentTime / duration }} </progress> <br> <a ng-href='"
+                            + newSong.url
+                            + "'> View on SoundCloud </a>"
+                            + "</div>"
+                        )
+                    }
+                })
+            });
         });
+
+        return false;
     });
 
-    return false;
 });
-
-})
-;
