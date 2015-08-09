@@ -8,21 +8,16 @@
       });
   </script>
 
-  <div class="row">
-    <div class="col-lg-6 col-lg-offset-3">
-      <div id="welcome-banner">
-        <h1><%= @party.name %></h1>
-        <h3><a class="btn btn-lg btn-info"
-               href="https://twitter.com/intent/tweet?text=Come%20%26%20Party%20with%20me%20on%20%40Collaborave!%20Add%20songs%20to%20my%20playlist%20here%3A%20&url=http%3A%2F%2Fcollaborave.herokuapp.com/parties/<%=  @party.id%>&via=NYDrewReynolds"
-               data-size="large" data-count="none"><i class="fa fa-twitter"></i> Share Your Party Link</a></h3>
-        <hr>
-      </div>
-    </div>
-  </div>
 
   <div class="row">
     <div class="col-lg-3 col-lg-offset-1">
       <div id="welcome-banner">
+        <h2><%= @party.name %></h2>
+
+        <h3><a class="btn btn-lg btn-info"
+               href="https://twitter.com/intent/tweet?text=Come%20%26%20Party%20with%20me%20on%20%40Collaborave!%20Add%20songs%20to%20my%20playlist%20here%3A%20&url=http%3A%2F%2Fcollaborave.herokuapp.com/parties/<%= @party.id %>&via=NYDrewReynolds"
+               data-size="large" data-count="none"><i class="fa fa-twitter"></i> Share Your Party Link</a></h3>
+        <hr>
         <h2>Add a Song!</h2>
       </div>
       <div class="input-group">
@@ -34,10 +29,10 @@
       <div id="sc-results"></div>
     </div>
 
-    <div class="col-lg-7">
-      <div id="welcome-banner">
-        <h2>Tracklist</h2>
-      </div>
+    <div class="col-lg-6 col-lg-offset-1">
+      <!--<div id="welcome-banner">-->
+        <!--<h2>Tracklist</h2>-->
+      <!--</div>-->
       <div id="player" class="sc-player">
       </div>
 
