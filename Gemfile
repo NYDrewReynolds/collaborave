@@ -13,6 +13,7 @@ gem 'rails_12factor', group: :production
 gem 'figaro'
 gem 'angularjs-rails'
 gem 'omniauth-twitter'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug'
