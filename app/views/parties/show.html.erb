@@ -24,7 +24,7 @@
   </div>
 
   <div class="row">
-    <div class="col-lg-4 col-lg-offset-1">
+    <div class="col-lg-3 col-lg-offset-1">
       <div id="welcome-banner">
         <h2>Add a Song!</h2>
       </div>
@@ -37,23 +37,43 @@
       <div id="sc-results"></div>
     </div>
 
-    <div class="col-lg-6" ng-app="app">
+    <div class="col-lg-7" ng-app="app">
       <div id="welcome-banner">
         <h2>Tracklist</h2>
       </div>
-      <% @party.songs.each do |song| %>
-          <div class="sc-track" plangular="<%= song.url %>">
-            <div class="pull-left"><img ng-src="{{ track.artwork_url  }}"></div>
-            <h3>{{track.user.username}} - {{track.title}}</h3>
+      <div id="player">
 
-            <button ng-click="playPause()">Play/Pause</button>
-            <progress ng-click="seek($event)" ng-value="currentTime / duration">
-              {{ currentTime / duration }}
-            </progress>
-            <br>
-            <a ng-href="<%= song.url %>">View on SoundCloud</a>
-          </div>
-      <% end %>
+      </div>
+
+      <script>
+          (function () {
+              var script = document.createElement("script");
+
+              script.type = "text/javascript";
+              script.async = true;
+              script.src = "//sd.toneden.io/production/toneden.loader.js"
+
+              var entry = document.getElementsByTagName("script")[0];
+              entry.parentNode.insertBefore(script, entry);
+          }());
+
+          ToneDenReady = window.ToneDenReady || [];
+          ToneDenReady.push(function () {
+              // This is where all the action happens:
+              ToneDen.player.create({
+                  dom: "#player",
+                  skin: "light",
+                  tracksPerArtist: 4,
+                  urls: [
+                          <% @party.songs.each do |song| %>
+                          "<%= song.url %>",
+                          <% end %>
+                  ]
+              });
+          });
+      </script>
+
+
       <!--<div class="tracklist" ng-app="app" plangular="http://soundcloud.com/oliverheldens/tracks">-->
       <!--<ul>-->
       <!--<li ng-repeat="track in tracks">-->

@@ -22,8 +22,10 @@ jQuery(document).ready(function ($) {
 
             $('a.search-result').on('click', function () {
                 var songParams = {
-                    post: {permalink_url: this.getAttribute("data-url"),
-                           party_id: this.pathname[this.pathname.length - 1]}
+                    post: {
+                        permalink_url: this.getAttribute("data-url"),
+                        party_id: this.pathname[this.pathname.length - 1]
+                    }
                 };
 
                 $.ajax({
@@ -32,12 +34,8 @@ jQuery(document).ready(function ($) {
                     data: songParams,
                     success: function (newSong) {
                         $('#latest-posts').append(
-                            "<div class='sc-track' plangular='"
-                            + newSong.url
-                            + "'><div class='pull-left'<img ng-src='{{track.artwork_url}}'></div> <h3>{{track.user.username}} - {{track.title}}</h3> <button ng-click='playPause()'>Play/Pause</button><progress ng-click='seek($event)' ng-value='currentTime / duration' > {{ currentTime / duration }} </progress> <br> <a ng-href='"
-                            + newSong.url
-                            + "'> View on SoundCloud </a>"
-                            + "</div>"
+                        //<tr class= "track-info" data - index = "1" > < td > < divclass = "track-info"data - index = "1" > < /div></td > < td > < divclass = "track-info-name tdlarge-12 tdsmall-12 tdcolumns" > EdSheeran &amp; Passenger - NoDiggityvs.ThriftShop(KygoRemix) </ div > < / td > < td class= "track-info-stats" style = "width:40%" > < div class= "track-info-social tdlarge-12 tdsmall-12 tdcolumns" > < divclass = "track-info-plays tdsmall-4 tdlarge-4 tdcolumns" > < iclass = "tdicon-play-circle-fill playlist-social-icon" > < /i> 19,278,843 </div > < divclass = "track-info-favorites tdsmall-4 tdlarge-4 tdcolumns" > < i class= "tdicon-heart playlist-social-icon" > < /i> 283,149 </div > < / div > < / td > < / tr >
+
                         )
                     }
                 })
@@ -47,4 +45,19 @@ jQuery(document).ready(function ($) {
         return false;
     });
 
-});
+    });
+
+
+//success: function (newSong) {
+//    $('#latest-posts').append(
+//        "<div class='sc-track' plangular='"
+//        + newSong.url
+//        + "'><div class='pull-left'<img ng-src='{{track.artwork_url}}'></div> <h3>{{track.user.username}} - {{track.title}}</h3> <button ng-click='playPause()'>Play/Pause</button><progress ng-click='seek($event)' ng-value='currentTime / duration' > {{ currentTime / duration }} </progress> <br> <a ng-href='"
+//        + newSong.url
+//        + "'> View on SoundCloud </a>"
+//        + "</div>"
+//    )
+//}
+
+//
+//
