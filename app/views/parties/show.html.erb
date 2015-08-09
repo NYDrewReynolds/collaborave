@@ -9,7 +9,8 @@
   <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
   <script>
       SC.initialize({
-          client_id: '9f4653e84b164bb44aadc5d79ff55863'
+          client_id: '9f4653e84b164bb44aadc5d79ff55863',
+          redirect_uri: "http://collaborave.herokuapp.com/callback"
       });
   </script>
 
@@ -36,12 +37,12 @@
       <div id="sc-results"></div>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-6" ng-app="app">
       <div id="welcome-banner">
         <h2>Tracklist</h2>
       </div>
       <% @party.songs.each do |song| %>
-          <div class="sc-track" ng-app="app" plangular="<%= song.url %>">
+          <div class="sc-track" plangular="<%= song.url %>">
             <div class="pull-left"><img ng-src="{{ track.artwork_url  }}"></div>
             <h3>{{track.user.username}} - {{track.title}}</h3>
 
