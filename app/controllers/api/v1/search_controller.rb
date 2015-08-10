@@ -17,7 +17,19 @@ class Api::V1::SearchController < ApplicationController
   end
 
   def remove_song
+    song_url = params[:song][:permalink_url]
+    party_id = params[:song][:party_id]
+    song = Song.find_by(url: song_url)
+    party = Party.find_by(id: party_id)
+    party.party_songs.destroy(song: song)
 
+    render party_path(party)
+
+    flash[:success] = 'Song successfully removed!'
+
+    respond_to do |format|
+      format.js
+    end
   end
 
 end

@@ -31,7 +31,7 @@
 
     <div class="col-lg-6 col-lg-offset-1">
       <!--<div id="welcome-banner">-->
-        <!--<h2>Tracklist</h2>-->
+      <!--<h2>Tracklist</h2>-->
       <!--</div>-->
       <div id="player" class="sc-player">
       </div>
@@ -58,9 +58,9 @@
                   shrink: false,
                   visualizerType: 'bars',
                   urls: [
-                          <% @party.songs.each do |song| %>
-                          "<%= song.url %>",
-                          <% end %>
+                      <% @party.songs.each do |song| %>
+                      "<%= song.url %>",
+                      <% end %>
                   ]
               });
 
@@ -68,27 +68,41 @@
           setTimeout(function () {
               $('.track-info').hover(
                       function () {
-                          $(this).append($("<span id='delete-song'><i class='fa fa-times'></i></span>"));
+                          $(this).append($("<span id='delete-song'><i class='fa fa-times fa-lg'></i></span>"));
                       }, function () {
                           $(this).find("span:last").remove();
                       }
               );
           }, 2500);
 
-          $('.playlist-table').delegate('#delete-song', 'click', function () {
-              var $post = $(this).closest('.post');
-              $.ajax({
-                  type: 'DELETE',
-                  url: 'api/v1/remove_song',
+          setTimeout(function () {
+              $('.playlist-table').delegate('#delete-song', 'click', function () {
+//                  debugger;
+//                  var $song = $(this).closest('.track-info');
+                  var $index = $(this).closest('.track-info').data('index');
+//                  var songParams = {
+//                      post: {
+////                          permalink_url: this.getAttribute("data-url"),
+////                          party_id: this.pathname[this.pathname.length - 1]
+//                      }
+//                  };
+
+                  $.ajax({
+//                      type: 'DELETE',
+//                      url: 'api/v1/remove_song',
+//                      data: songParams,
 //                  url: 'http://turing-birdie.herokuapp.com/api/v1/posts.json' + $post.attr('data-id') + '.json',
-                  success: function () {
-                      $post.remove()
-                  },
-                  error: function () {
-                      $post.remove()
-                  }
-              })
-          });
+                      success: function () {
+                          ToneDen.player.getInstanceByDom("#player").removeTracks($index, 1);
+                      },
+                      error: function (xhr, ajaxOptions, thrownError) {
+                          console.log(xhr.status);
+                          console.log(xhr.responseText);
+                          console.log(thrownError);
+                      }
+                  })
+              });
+          }, 2500);
       </script>
 
     </div>
