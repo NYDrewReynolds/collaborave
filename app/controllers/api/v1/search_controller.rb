@@ -16,4 +16,8 @@ class Api::V1::SearchController < ApplicationController
 
   end
 
+  def remove_song
+
+  end
+
 end

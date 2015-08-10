@@ -63,6 +63,31 @@
                           <% end %>
                   ]
               });
+
+          });
+          setTimeout(function () {
+              $('.track-info').hover(
+                      function () {
+                          $(this).append($("<span id='delete-song'><i class='fa fa-times'></i></span>"));
+                      }, function () {
+                          $(this).find("span:last").remove();
+                      }
+              );
+          }, 2500);
+
+          $('.playlist-table').delegate('#delete-song', 'click', function () {
+              var $post = $(this).closest('.post');
+              $.ajax({
+                  type: 'DELETE',
+                  url: 'api/v1/remove_song',
+//                  url: 'http://turing-birdie.herokuapp.com/api/v1/posts.json' + $post.attr('data-id') + '.json',
+                  success: function () {
+                      $post.remove()
+                  },
+                  error: function () {
+                      $post.remove()
+                  }
+              })
           });
       </script>
 
