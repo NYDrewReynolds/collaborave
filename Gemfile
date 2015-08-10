@@ -14,6 +14,7 @@ gem 'figaro'
 gem 'angularjs-rails'
 gem 'omniauth-twitter'
 gem 'font-awesome-rails'
+gem 'skylight'
 
 group :development, :test do
   gem 'byebug'
