@@ -5,14 +5,7 @@
         <div class="col-lg-6 col-lg-offset-3">
           <div id="welcome-banner">
             <h1>Start a Party!</h1>
-
             <%= form_for(@party, url: {:action => "create", :controller => "parties"}, html: {multipart: true}) do |f| %>
-                <!--<ul class="errors">-->
-                <!--<#% f.object.errors.full_messages.each do |msg| %>-->
-                <!--<li><%#= msg %></li>-->
-                <!--<#% end %>-->
-                <!--</ul>-->
-
                 <%= f.label :name %>
                 <%= f.text_field :name %><br>
 
@@ -24,16 +17,10 @@
         <div class="col-lg-4 col-lg-offset-2">
           <h1>Start a Party!</h1>
           <%= form_for(@party, url: {:action => "create", :controller => "parties"}, html: {multipart: true}) do |f| %>
-              <!--<ul class="errors">-->
-              <!--<#% f.object.errors.full_messages.each do |msg| %>-->
-              <!--<li><%#= msg %></li>-->
-              <!--<#% end %>-->
-              <!--</ul>-->
-
               <%= f.label :name %>
               <%= f.text_field :name %><br>
 
-              <%= f.submit "Get the Party Started!", class:"btn btn-search" %>
+              <%= f.submit "Get the Party Started!", class: "btn btn-search" %>
           <% end %>
         </div>
 
