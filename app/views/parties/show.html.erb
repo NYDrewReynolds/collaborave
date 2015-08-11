@@ -62,26 +62,27 @@
               $('.delete-song').click(function (event) {
                   event.preventDefault();
                   var $index = $(this).closest('.track-info').data('index');
+                  ToneDen.player.getInstanceByDom("#player").removeTracks($index, 1);
                   var songParams = {
                       song: {
                           song_index: $(this).closest('.track-info').data('index'),
                           party_id: window.location.href[window.location.href.length - 1]
                       }
                   };
-                      $.ajax({
-                              type: 'DELETE',
-                              url: '/api/v1/remove_song',
-                              data: songParams,
-                              success: function () {
-                                  alert("succeeded!");
-                                  ToneDen.player.getInstanceByDom("#player").removeTracks($index, 1);
-                              },
-                              fail: function (xhr, ajaxOptions, thrownError) {
-                                  console.log(xhr.status);
-                                  console.log(xhr.responseText);
-                                  console.log(thrownError);
-                              }
-                          })
+
+                  $.ajax({
+                      type: 'DELETE',
+                      url: '/api/v1/remove_song',
+                      data: songParams,
+                      success: function () {
+                          alert("succeeded!");
+                      },
+                      error: function (xhr, ajaxOptions, thrownError) {
+                          console.log(xhr.status);
+                          console.log(xhr.responseText);
+                          console.log(thrownError);
+                      }
+                  })
               });
 
 //              $('.playlist-table').delegate('#delete-song', 'click', function (event) {
