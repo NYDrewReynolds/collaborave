@@ -1,11 +1,14 @@
 class Api::V1::SearchController < ApplicationController
+  require 'uri'
 
   def add_song
     song_url = params[:post][:permalink_url]
-    party_id = params[:post][:party_id]
+    party_path = params[:post][:party_path]
+    uri = URI(party_path)
+    party_slug = uri.path.split("/")[-1]
     # song = Song.create(url: song_url)
     song = Song.create(url: song_url) if Song.find_by(url: song_url).nil?
-    party = Party.find_by(id: party_id)
+    party = Party.friendly.find(party_slug)
     party.party_songs.create(song: song)
 
     respond_to do |format|
@@ -16,8 +19,11 @@ class Api::V1::SearchController < ApplicationController
 
   def remove_song
     song_index = params[:song][:song_index].to_i
-    party_id = params[:song][:party_id]
-    party = Party.find_by(id: party_id)
+    party_path = params[:song][:party_path]
+    uri = URI(party_path)
+    party_slug = uri.path.split("/")[-1]
+    party = Party.friendly.find(party_slug)
+
     songs_group = []
 
     party.songs.each do |song|

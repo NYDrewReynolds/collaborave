@@ -27,6 +27,6 @@ class PartiesController < ApplicationController
   end
 
   def set_party
-    @party = Party.find(params[:id])
+    @party = Party.friendly.find(params[:id])
   end
 end

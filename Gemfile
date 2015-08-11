@@ -15,6 +15,7 @@ gem 'angularjs-rails'
 gem 'omniauth-twitter'
 gem 'font-awesome-rails'
 gem 'skylight'
+gem 'friendly_id', '~> 5.1.0'
 
 group :development, :test do
   gem 'byebug'

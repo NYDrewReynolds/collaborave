@@ -24,7 +24,7 @@ jQuery(document).ready(function ($) {
                 var songParams = {
                     post: {
                         permalink_url: this.getAttribute("data-url"),
-                        party_id: this.pathname[this.pathname.length - 1]
+                        party_path: window.location.href
                     }
                 };
 
