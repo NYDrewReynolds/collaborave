@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post 'add_song', to: 'search#add_song'
+      delete 'remove_song', to: 'search#remove_song'
     end
   end
 end

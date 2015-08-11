@@ -112,6 +112,10 @@ body {
     width: 150px;
 }
 
+#party-sidebar {
+    text-align: center;
+}
+
 .btn-search {
     background-color: #DC143C;
     color: white;
@@ -136,4 +140,12 @@ body {
 
 .sc-player {
     padding-bottom: 15px;
+}
+
+.delete-song {
+    display: none;
+}
+
+.track-info:hover .delete-song {
+    display: block;
 }

@@ -11,17 +11,17 @@
 
   <div class="row">
     <div class="col-lg-3 col-lg-offset-1">
-      <div id="welcome-banner">
-        <h2><%= @party.name %></h2>
+      <div id="party-sidebar">
+        <h1><%= @party.name %></h1>
 
         <h3><a class="btn btn-lg btn-info"
                href="https://twitter.com/intent/tweet?text=Come%20%26%20Party%20with%20me%20on%20%40Collaborave!%20Add%20songs%20to%20my%20playlist%20here%3A%20&url=http%3A%2F%2Fcollaborave.herokuapp.com/parties/<%= @party.id %>&via=NYDrewReynolds"
                data-size="large" data-count="none"><i class="fa fa-twitter"></i> Share Your Party Link</a></h3>
         <hr>
-        <h2>Add a Song!</h2>
+        <!--<h2>Add a Song!</h2>-->
       </div>
       <div class="input-group">
-        <input id="search" type="search" name="search" type="text" class="form-control" placeholder="Search SoundCloud">
+        <input id="search" type="search" name="search" type="text" class="form-control" placeholder="Add Songs via SoundCloud">
       <span class="input-group-btn">
         <button class="btn btn-default btn-search" type="button">Go!</button>
       </span>
@@ -48,9 +48,73 @@
               entry.parentNode.insertBefore(script, entry);
           }());
 
+
+          function removeSong() {
+//              $('.track-info').hover(
+//                      function () {
+//                          $(this).append($("<span id='delete-song'><i class='fa fa-times fa-lg'></i></span>"));
+//                      }, function () {
+//                          $(this).find("span:last").remove();
+//                      }
+//              );
+              $('tr.track-info').append($("<span class='delete-song'><i class='fa fa-times fa-lg'></i></span>"));
+
+              $('.delete-song').click(function (event) {
+                  event.preventDefault();
+                  var $index = $(this).closest('.track-info').data('index');
+                  var songParams = {
+                      song: {
+                          song_index: $(this).closest('.track-info').data('index'),
+                          party_id: window.location.href[window.location.href.length - 1]
+                      }
+                  };
+                      $.ajax({
+                              type: 'DELETE',
+                              url: '/api/v1/remove_song',
+                              data: songParams,
+                              success: function () {
+                                  alert("succeeded!");
+                                  ToneDen.player.getInstanceByDom("#player").removeTracks($index, 1);
+                              },
+                              fail: function (xhr, ajaxOptions, thrownError) {
+                                  console.log(xhr.status);
+                                  console.log(xhr.responseText);
+                                  console.log(thrownError);
+                              }
+                          })
+              });
+
+//              $('.playlist-table').delegate('#delete-song', 'click', function (event) {
+//                  event.preventDefault();
+////                var $song = $(this).closest('.track-info');
+//                  var $index = $(this).closest('.track-info').data('index');
+//                  var songParams = {
+//                      song: {
+//                          song_index: $(this).closest('.track-info').data('index'),
+//                          party_id: window.location.href[window.location.href.length - 1]
+//                      }
+//                  };
+//
+//                  $.ajax({
+//                      type: 'DELETE',
+//                      url: '/api/v1/remove_song',
+//                      data: songParams,
+//                      success: function () {
+//                          alert("succeeded!");
+//                          ToneDen.player.getInstanceByDom("#player").removeTracks($index, 1);
+//                      },
+//                      fail: function (xhr, ajaxOptions, thrownError) {
+//                          console.log(xhr.status);
+//                          console.log(xhr.responseText);
+//                          console.log(thrownError);
+//                      }
+//                  })
+//              });
+
+          }
+
           ToneDenReady = window.ToneDenReady || [];
           ToneDenReady.push(function () {
-              // This is where all the action happens:
               ToneDen.player.create({
                   dom: "#player",
                   skin: "light",
@@ -61,50 +125,11 @@
                       <% @party.songs.each do |song| %>
                       "<%= song.url %>",
                       <% end %>
-                  ]
+                  ],
+                  onTrackReady: removeSong
               });
-
           });
-          setTimeout(function () {
-              $('.track-info').hover(
-                      function () {
-                          $(this).append($("<span id='delete-song'><i class='fa fa-times fa-lg'></i></span>"));
-                      }, function () {
-                          $(this).find("span:last").remove();
-                      }
-              );
-          }, 2500);
-
-          setTimeout(function () {
-              $('.playlist-table').delegate('#delete-song', 'click', function () {
-//                  debugger;
-//                  var $song = $(this).closest('.track-info');
-                  var $index = $(this).closest('.track-info').data('index');
-//                  var songParams = {
-//                      post: {
-////                          permalink_url: this.getAttribute("data-url"),
-////                          party_id: this.pathname[this.pathname.length - 1]
-//                      }
-//                  };
-
-                  $.ajax({
-//                      type: 'DELETE',
-//                      url: 'api/v1/remove_song',
-//                      data: songParams,
-//                  url: 'http://turing-birdie.herokuapp.com/api/v1/posts.json' + $post.attr('data-id') + '.json',
-                      success: function () {
-                          ToneDen.player.getInstanceByDom("#player").removeTracks($index, 1);
-                      },
-                      error: function (xhr, ajaxOptions, thrownError) {
-                          console.log(xhr.status);
-                          console.log(xhr.responseText);
-                          console.log(thrownError);
-                      }
-                  })
-              });
-          }, 2500);
       </script>
-
     </div>
   </div>
 
