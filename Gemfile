@@ -21,6 +21,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'simplecov'
   gem 'byebug'
+  gem 'pry'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end

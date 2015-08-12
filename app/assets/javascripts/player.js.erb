@@ -1,0 +1,42 @@
+(function () {
+    var script = document.createElement("script");
+
+    script.type = "text/javascript";
+    script.async = true;
+    script.src = "//sd.toneden.io/production/toneden.loader.js";
+
+    var entry = document.getElementsByTagName("script")[0];
+    entry.parentNode.insertBefore(script, entry);
+}());
+
+
+function removeSong() {
+    $('tr.track-info').append($("<span class='delete-song'><i class='fa fa-times fa-lg'></i></span>"));
+
+    $('.delete-song').click(function (event) {
+        event.preventDefault();
+        var $index = $(this).closest('.track-info').data('index');
+        ToneDen.player.getInstanceByDom("#player").removeTracks($index, 1);
+        var songParams = {
+            song: {
+                song_index: $(this).closest('.track-info').data('index'),
+                party_path: window.location.href
+            }
+        };
+
+        $.ajax({
+            type: 'DELETE',
+            url: '/api/v1/remove_song',
+            data: songParams,
+            success: function () {
+                alert("succeeded!");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status);
+//                          console.log(xhr.responseText);
+//                          console.log(thrownError);
+            }
+        })
+    });
+
+}
