@@ -8,7 +8,7 @@
   <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
   <script>
       SC.initialize({
-          client_id: '9f4653e84b164bb44aadc5d79ff55863',
+          '<%= ENV['SC_CLIENT_ID'] %>'',
           redirect_uri: "http://collaborave.herokuapp.com/callback"
       });
   </script>
