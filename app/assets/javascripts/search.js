@@ -5,7 +5,7 @@ jQuery(document).ready(function ($) {
 
         $('#sc-results').html('');
 
-        SC.get('/tracks', {q: searchData, limit: '20'}, function (tracks) {
+        SC.get('/tracks', {q: searchData, limit: '6'}, function (tracks) {
 
             for (var i = 0, len = tracks.length; i < len; i++) {
                 $('#sc-results').append(

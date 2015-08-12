@@ -1,5 +1,5 @@
 class PartiesController < ApplicationController
-  before_action :set_party, only: [:show, :edit, :update]
+  before_action :set_party, only: [:show]
 
   def show
   end
