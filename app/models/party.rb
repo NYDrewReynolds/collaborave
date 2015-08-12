@@ -3,7 +3,7 @@ class Party < ActiveRecord::Base
   has_many :party_songs
   has_many :songs, through: :party_songs
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :slug, presence: true
 
   extend FriendlyId
