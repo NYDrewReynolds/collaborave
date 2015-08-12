@@ -5,34 +5,18 @@
         <div class="col-lg-6 col-lg-offset-3">
           <div id="welcome-banner">
             <h1>Start a Party!</h1>
-            <%= form_for(@party, url: {:action => "create", :controller => "parties"}, html: {multipart: true}) do |f| %>
-                <%= f.label :name %>
-                <%= f.text_field :name %><br>
-
-                <%= f.submit "Get the Party Started!" %>
-            <% end %>
+            <%= render 'shared/party_form' %>
           </div>
         </div>
     <% else %>
         <div class="col-lg-4 col-lg-offset-2">
           <h1>Start a Party!</h1>
-          <%= form_for(@party, url: {:action => "create", :controller => "parties"}, html: {multipart: true}) do |f| %>
-              <%= f.label :name %>
-              <%= f.text_field :name %><br>
-
-              <%= f.submit "Get the Party Started!", class: "btn btn-search" %>
-          <% end %>
+          <%= render 'shared/party_form' %>
         </div>
 
         <div class="col-lg-4 col-lg-offset-1">
           <h1>Your Past Parties</h1>
-          <ul>
-            <% current_user.parties.each do |party| %>
-                <li>
-                  <%= link_to party.name, party_path(party) %>
-                </li>
-            <% end %>
-          </ul>
+        <%= render 'shared/party_list' %>
     <% end %>
     </div>
   </div>

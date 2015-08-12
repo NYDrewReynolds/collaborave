@@ -1,0 +1,5 @@
+<%= form_for(@party, url: {:action => "create", :controller => "parties"}, html: {multipart: true}) do |f| %>
+    <%= f.text_field :name, placeholder: 'Name Your Party' %><br>
+
+    <%= f.submit "Get the Party Started!", class: 'btn btn-success' %>
+<% end %>

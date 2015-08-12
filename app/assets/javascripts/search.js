@@ -11,7 +11,6 @@ jQuery(document).ready(function ($) {
                 $('#sc-results').append(
                     '<br><div>'
                     + "<a class='search-result' href='' data-url='"
-                        //+ "<a class='search-result' href='"
                     + tracks[i].permalink_url
                     + "'>"
                     + tracks[i].title

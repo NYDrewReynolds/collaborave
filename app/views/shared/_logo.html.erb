@@ -1,0 +1,5 @@
+<% if current_user %>
+    <%= link_to "Collaborave", home_path, class: "navbar-brand" %>
+<% else %>
+    <%= link_to "Collaborave", root_path, class: "navbar-brand" %>
+<% end %>
