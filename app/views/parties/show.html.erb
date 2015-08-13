@@ -4,10 +4,7 @@
     <div class="col-lg-3 col-lg-offset-1">
       <div id="party-sidebar">
         <h1><%= @party.name %></h1>
-
-        <h3><a class="btn btn-lg btn-info"
-               href="https://twitter.com/intent/tweet?text=Come%20%26%20Party%20with%20me%20on%20%40Collaborave!%20Add%20songs%20to%20my%20playlist%20here%3A%20&url=http%3A%2F%2Fcollaborave.herokuapp.com/parties/<%= @party.slug %>&via=NYDrewReynolds"
-               data-size="large" data-count="none"><i class="fa fa-twitter"></i> Share Your Party Link</a></h3>
+        <%= render 'shared/click_to_tweet' %>
         <hr>
       </div>
       <div class="input-group">
@@ -22,28 +19,8 @@
     <div class="col-lg-6 col-lg-offset-1">
       <div id="player" class="sc-player">
       </div>
-
-      <script>
-          ToneDenReady = window.ToneDenReady || [];
-          ToneDenReady.push(function () {
-              ToneDen.player.create({
-                  dom: "#player",
-                  skin: "light",
-                  tracksPerArtist: 4,
-                  shrink: false,
-                  visualizerType: 'bars',
-                  urls: [
-                      <% @party.songs.each do |song | %>
-                      "<%= song.url %>",
-                      <% end %>
-                  ],
-
-                  onTrackReady: removeSong
-              });
-          });
-      </script>
     </div>
   </div>
 
-
 </div>
+<%= render 'shared/player' %>

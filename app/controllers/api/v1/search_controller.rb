@@ -14,7 +14,6 @@ class Api::V1::SearchController < ApplicationController
     respond_to do |format|
       format.js { render json: {success: true} }
     end
-
   end
 
   def remove_song

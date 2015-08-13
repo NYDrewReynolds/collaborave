@@ -1,0 +1,19 @@
+<script>
+    ToneDenReady = window.ToneDenReady || [];
+    ToneDenReady.push(function () {
+        ToneDen.player.create({
+            dom: "#player",
+            skin: "light",
+            tracksPerArtist: 4,
+            shrink: false,
+            visualizerType: 'bars',
+            urls: [
+                <% @party.songs.each do |song | %>
+                "<%= song.url %>",
+                <% end %>
+            ],
+
+            onTrackReady: removeSong
+        });
+    });
+</script>
