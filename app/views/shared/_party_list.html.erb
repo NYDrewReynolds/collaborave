@@ -2,6 +2,11 @@
   <% current_user.parties.each do |party| %>
       <li>
         <%= link_to party.name, party_path(party) %>
+        <% if party.songs.count == 1  %>
+        - <%= party.songs.count %> Song
+            <% else  %>
+        - <%= party.songs.count %> Songs
+            <% end  %>
       </li>
   <% end %>
 </ul>
