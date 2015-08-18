@@ -33,3 +33,21 @@ def stub_omniauth
                                                                    }
                                                                })
 end
+
+def stub_omniauth_invalid
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+                                                                   provider: 'twitter2',
+                                                                   extra: {
+                                                                       raw_info: {
+                                                                           user_id: "1",
+                                                                           name: "Drew Reynolds",
+                                                                           screen_name: "NYDrewReynolds",
+                                                                       }
+                                                                   },
+                                                                   credentials: {
+                                                                       token: "367814457-zDEbWLKqoUZX7hHfw4ef0ggeHmEgPJlrnTOGSdEx",
+                                                                       secret: "YZBvOtN3RFjSkFakf3uNYEGgJzkBFhcH9WEmG4kPhJGLp",
+                                                                   }
+                                                               })
+end

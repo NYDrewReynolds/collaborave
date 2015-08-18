@@ -29,4 +29,5 @@ describe 'user can log in', type: :feature do
     assert page.has_content?("Drew Reynolds")
     assert page.has_content?("Logout")
   end
+
 end
