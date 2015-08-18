@@ -4,10 +4,6 @@ class PartiesController < ApplicationController
   def show
   end
 
-  def new
-    @party = Party.new
-  end
-
   def create
     @party = Party.new(party_params)
     @party.user_id = current_user.id

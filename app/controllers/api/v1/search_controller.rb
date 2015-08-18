@@ -2,8 +2,8 @@ class Api::V1::SearchController < ApplicationController
   require 'uri'
 
   def add_song
-    song_url = params[:post][:permalink_url]
-    party_path = params[:post][:party_path]
+    song_url = params[:song][:permalink_url]
+    party_path = params[:song][:party_path]
     uri = URI(party_path)
     party_slug = uri.path.split("/")[-1]
     # song = Song.create(url: song_url)
@@ -13,6 +13,7 @@ class Api::V1::SearchController < ApplicationController
 
     respond_to do |format|
       format.js { render json: {success: true} }
+      format.json { render json: {success: true} }
     end
   end
 
@@ -34,6 +35,7 @@ class Api::V1::SearchController < ApplicationController
 
     respond_to do |format|
       format.js { render json: {success: true} }
+      format.json { render json: {success: true} }
     end
   end
 
