@@ -150,7 +150,7 @@ body {
     display: block;
 }
 
-body#background {
+#background {
     background: linear-gradient(
             rgba(220, 20, 60, 0.75),
             rgba(220, 20, 60, 0.75)
