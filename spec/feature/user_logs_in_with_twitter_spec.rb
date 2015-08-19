@@ -30,4 +30,13 @@ describe 'user can log in', type: :feature do
     assert page.has_content?("Logout")
   end
 
+  it 'logged in user wont be assigned new tokens' do
+    visit root_path
+    assert_equal 200, page.status_code
+    click_on "Login With Twitter"
+    assert_equal '/home', current_path
+    visit root_path
+    click_on "Login With Twitter"
+  end
+
 end

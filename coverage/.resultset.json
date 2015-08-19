@@ -32,10 +32,10 @@
         1,
         null,
         1,
-        5,
-        0,
+        7,
+        1,
         null,
-        5,
+        6,
         null,
         null,
         null,
@@ -115,7 +115,7 @@
         1,
         null,
         1,
-        31,
+        39,
         null,
         null,
         1,
@@ -136,10 +136,10 @@
       "/Users/drewreynolds/Documents/Turing/3Module/collaborave/app/controllers/sessions_controller.rb": [
         1,
         1,
-        5,
-        5,
-        5,
-        5,
+        7,
+        7,
+        7,
+        7,
         null,
         0,
         null,
@@ -154,7 +154,7 @@
       "/Users/drewreynolds/Documents/Turing/3Module/collaborave/app/controllers/home_controller.rb": [
         1,
         1,
-        6,
+        8,
         null,
         null
       ],
@@ -187,6 +187,6 @@
         null
       ]
     },
-    "timestamp": 1439932433
+    "timestamp": 1440003030
   }
 }
