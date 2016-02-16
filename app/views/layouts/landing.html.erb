@@ -7,10 +7,11 @@
   <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
   <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
   <script>
-      SC.initialize({
-          '<%= ENV['SC_CLIENT_ID'] %>',
-          redirect_uri: "http://collaborave.herokuapp.com/callback"
-      });
+  SC.initialize({
+  client_id: '<%= ENV['SC_CLIENT_ID'] %>',
+  redirect_uri: "http://collaborave.herokuapp.com/callback"
+});
+
   </script>
   <%= csrf_meta_tags %>
 </head>
