@@ -11,7 +11,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'twitter-bootstrap-rails'
 gem 'rails_12factor', group: :production
 gem 'figaro'
-gem 'angularjs-rails'
 gem 'omniauth-twitter'
 gem 'font-awesome-rails'
 gem 'skylight'

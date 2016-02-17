@@ -10,7 +10,7 @@ class Api::V1::SearchController < ApplicationController
     song = Song.create(url: song_url) if Song.find_by(url: song_url).nil?
     party = Party.friendly.find(party_slug)
     party.party_songs.create(song: song)
-
+    byebug
     respond_to do |format|
       format.js { render json: {success: true} }
       format.json { render json: {success: true} }
